@@ -2,7 +2,7 @@
   <v-app id='inspire' dark>
     <v-navigation-drawer v-model='drawer' fixed clipped app>
       <v-list dense>
-        <v-list-tile v-for='item in items' :key='item.text'>
+        <v-list-tile v-for='item in items' :key='item.text' :to="item.url">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -39,36 +39,27 @@
       <v-toolbar-title class='mr-5 align-center'>
         <span class='title white--text'>Backup Plan</span>
       </v-toolbar-title>
-      
       <v-layout row align-center style='max-width: 650px'></v-layout>
     </v-toolbar>
     <v-content>
       <v-container fill-height>
         <router-view></router-view>
-        <v-layout justify-center align-center>
-          
-        </v-layout>
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data: () => ({
     drawer: null,
     items: [
-      { icon: 'account_box', text: 'Profile' },
-      { icon: 'group_add', text: 'Donate Some Space' },
-      { icon: 'history', text: 'History' },
-      { icon: 'directions_run', text: 'Make Backup Plans' },
-      { icon: 'settings', text: 'Manage Contacts' }
+      { icon: 'account_box', text: 'Profile', url: '/profile' },
+      { icon: 'group_add', text: 'Donate Some Space', url: '/donate' },
+      { icon: 'history', text: 'History', url: '/History' },
+      { icon: 'directions_run', text: 'Make Backup Plans', url: '/makeaplan' },
+      { icon: 'settings', text: 'Manage Contacts', url: '/contacts' }
     ],
     items2: [
       { picture: 28, text: 'Joseph' },
@@ -83,3 +74,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  a:active {
+  background-color: red !important;
+}
+  .primary--text {
+    color: red !important;
+}
+</style>
