@@ -36,13 +36,13 @@
     <v-toolbar color='red' dense fixed clipped-left app>
       <v-toolbar-side-icon @click.stop='drawer = !drawer'></v-toolbar-side-icon>
       <v-icon dark class='mx-3'>fab fa-youtube</v-icon>
-      <v-toolbar-title class='mr-5 align-center'>
+      <v-toolbar-title to="/#" class='mr-5 align-center'>
         <span class='title white--text'>Backup Plan</span>
       </v-toolbar-title>
       <v-layout row align-center style='max-width: 650px'></v-layout>
     </v-toolbar>
     <v-content>
-      <v-container fill-height>
+      <v-container fill-height pa-0 ma-a>
         <router-view></router-view>
       </v-container>
     </v-content>

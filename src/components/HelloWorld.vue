@@ -1,11 +1,11 @@
 <template>
-  <v-container fluid>
+  <v-container fluid ma-0 pa-0>
     <v-layout text-xs-center wrap>
       <v-flex xs12>
         <v-img :src="require('../assets/hurricane.png')" class='my-3' contain></v-img>
       </v-flex>
       <v-flex mb-4>
-        <h2 class='display-2 font-weight-bold mb-2'>Do you have a plan?</h2>
+        <h2 class='display-1 font-weight-bold mb-2'>Do you have a plan?</h2>
         <v-dialog v-model="signup" persistent max-width="290">
       <v-btn slot="activator" color="red" dark>Sign Up</v-btn>
       <v-card>
@@ -38,30 +38,13 @@
       </v-flex>
 
       <v-flex xs12 mb-5>
-        <h2 class='headline font-weight-bold mb-3'>Important Links</h2>
+        <h2 class='headline font-weight-bold mb-3'>About Backup Plan</h2>
 
-        <v-layout justify-center>
-          <a
-            v-for='(link, i) in importantLinks'
-            :key='i'
-            :href='link.href'
-            class='subheading mx-2'
-            target='_blank'
-          >{{ link.text }}</a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex xs12 mb-5>
-        <h2 class='headline font-weight-bold mb-2'>Ecosystem</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for='(eco, i) in ecosystem'
-            :key='i'
-            :href='eco.href'
-            class='subheading mx-2'
-            target='_blank'
-          >{{ eco.text }}</a>
+        <v-layout  mt-15 justify-center>
+          <v-flex xs10>
+            Backup plan aims to connect people with extra living spaces to people who are evacuating a disaster area.
+            <v-btn mt-15 to="/about" color="red" dark>Learn More</v-btn>
+          </v-flex>
         </v-layout>
       </v-flex>
     </v-layout>
