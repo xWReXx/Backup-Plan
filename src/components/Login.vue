@@ -41,6 +41,7 @@
 
 <script>
 import firebase from 'firebase';
+import firestore from 'firebase/firestore'
 
 export default {
   data: () => ({
@@ -50,6 +51,7 @@ export default {
   }),
   methods: {
     login () {
+        const db = firebase.firestore()
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)

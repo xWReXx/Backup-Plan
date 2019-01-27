@@ -10,6 +10,7 @@
         </v-avatar>
       </v-badge>
       <h1>Fcombs85</h1>
+      <!-- <div class='test'></div> -->
       <v-divider></v-divider>
       <v-list two-line subheader>
         <v-list-tile avatar>
@@ -29,7 +30,7 @@
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Address</v-list-tile-title>
-            <v-list-tile-sub-title>{{ profile[0].adress }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ profile[0].birthday }}</v-list-tile-sub-title>
             <v-list-tile-sub-title>Lakewood</v-list-tile-sub-title>
             <v-list-tile-sub-title>Colorado 80232</v-list-tile-sub-title>
           </v-list-tile-content>
@@ -140,7 +141,7 @@ export default {
       .then(snapshot => {
         snapshot.forEach(doc => {
           let userProfile = doc.data()
-          // userProfile.id = doc.id
+          userProfile.id = doc.id
           this.profile.push(userProfile)
         })
       })
