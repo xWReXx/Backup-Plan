@@ -9,14 +9,14 @@
         <v-card-text>
           <v-form>
             <v-text-field
-              vmodel='email'
+              v-model='email'
               prepend-icon='person'
               name='login'
               label='Email'
               type='text'
             ></v-text-field>
             <v-text-field
-              vmodel='password'
+              v-model='password'
               prepend-icon='lock'
               name='password'
               label='Password'
@@ -48,11 +48,11 @@ export default {
     signup (e) {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.email.trim.toString().trim(), this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            alert(`Account Created For ${user.email}`)
-            this.$router.push('/profile')
+            alert(`Account Created For ${this.email}`)
+            this.$router.replace('/profile')
           },
           err => {
             alert(err.message)

@@ -13,14 +13,14 @@
         <v-card-text>
           <v-form>
             <v-text-field
-              vmodel='email'
+              v-model='email'
               prepend-icon='person'
               name='login'
-              label='text'
+              label='Email'
               type='text'
             ></v-text-field>
             <v-text-field
-              vmodel='password'
+              v-model='password'
               prepend-icon='lock'
               name='password'
               label='Password'
@@ -56,6 +56,9 @@ export default {
         .then(user => {
           this.$router.replace('/profile')
         })
+    },
+    testing () {
+        console.log(this.email)
     }
   }
 }
