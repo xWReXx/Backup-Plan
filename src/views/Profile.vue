@@ -10,27 +10,26 @@
         </v-avatar>
       </v-badge>
       <h1>Fcombs85</h1>
-      <!-- <div class="test"></div> -->
       <v-divider></v-divider>
       <v-list two-line subheader>
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Name</v-list-tile-title>
-            <v-list-tile-sub-title>Fabien Combs</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ profile[0].firstName + " " + profile[0].lastName }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
 
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Birth Date</v-list-tile-title>
-            <v-list-tile-sub-title>11/22/1985</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ profile[0].birthday }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
 
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Address</v-list-tile-title>
-            <v-list-tile-sub-title>1234 Big Walk Way</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ profile[0].adress }}</v-list-tile-sub-title>
             <v-list-tile-sub-title>Lakewood</v-list-tile-sub-title>
             <v-list-tile-sub-title>Colorado 80232</v-list-tile-sub-title>
           </v-list-tile-content>
@@ -58,11 +57,7 @@
                     <v-text-field label="Legal first name*" required></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6 md4>
-                    <v-text-field
-                      label="Legal last name*"
-                      persistent-hint
-                      required
-                    ></v-text-field>
+                    <v-text-field label="Legal last name*" persistent-hint required></v-text-field>
                   </v-flex>
                   <v-flex xs12>
                     <v-text-field label="Email*" required></v-text-field>
@@ -119,22 +114,38 @@
 </template>
 
 <script>
+import db from '@/firebase.js'
+
 export default {
   data: () => ({
     dialog: false,
-    menu: false
+    menu: false,
+    message: '',
+    profile: []
   }),
   watch: {
-      menu (val) {
-        val && this.$nextTick(() => (this.$refs.picker.activePicker = 'YEAR'))
-      }
-    },
-    methods: {
-      save (date) {
-        this.$refs.menu.save(date)
-      }
+    menu (val) {
+      val && this.$nextTick(() => (this.$refs.picker.activePicker = 'YEAR'))
     }
-};
+  },
+  methods: {
+    save (date) {
+      this.$refs.menu.save(date)
+    }
+  },
+  created () {
+    // fetching from firebase
+    db.collection('users')
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          let userProfile = doc.data()
+          // userProfile.id = doc.id
+          this.profile.push(userProfile)
+        })
+      })
+  }
+}
 </script>
 
 <style scoped>
