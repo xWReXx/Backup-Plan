@@ -40,8 +40,7 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-import firestore from 'firebase/firestore'
+import firebase from 'firebase'
 
 export default {
   data: () => ({
@@ -51,16 +50,12 @@ export default {
   }),
   methods: {
     login () {
-        const db = firebase.firestore()
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(user => {
           this.$router.replace('/profile')
         })
-    },
-    testing () {
-        console.log(this.email)
     }
   }
 }

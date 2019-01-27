@@ -77,14 +77,14 @@
                     >
                       <v-text-field
                         slot="activator"
-                        v-model="date"
+                        v-model="birthDate"
                         label="Birthday date"
                         prepend-icon="event"
                         readonly
                       ></v-text-field>
                       <v-date-picker
                         ref="picker"
-                        v-model="date"
+                        v-model="birthDate"
                         :max="new Date().toISOString().substr(0, 10)"
                         min="1950-01-01"
                         @change="save"
@@ -122,7 +122,8 @@ export default {
     dialog: false,
     menu: false,
     message: '',
-    profile: []
+    profile: [],
+    birthDate: ''
   }),
   watch: {
     menu (val) {
