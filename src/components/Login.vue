@@ -5,10 +5,6 @@
       <v-card class='elevation-12'>
         <v-toolbar dark color='red'>
           <v-toolbar-title>Login</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-tooltip bottom>
-            <v-btn icon large :href="source" target='_blank' slot='activator'></v-btn>
-          </v-tooltip>
         </v-toolbar>
         <v-card-text>
           <v-form>
@@ -54,7 +50,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(user => {
-          this.$router.replace('/profile')
+          this.$router.replace('/dashboard')
         })
     }
   }

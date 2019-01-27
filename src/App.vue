@@ -59,7 +59,7 @@ export default {
       { icon: 'group_add', text: 'Donate Some Space', url: '/donate' },
       { icon: 'history', text: 'History', url: '/History' },
       { icon: 'directions_run', text: 'Make Backup Plans', url: '/makeaplan' },
-      { icon: 'settings', text: 'Manage Contacts', url: '/contacts' }
+      { icon: 'settings', text: 'Dashboard', url: '/dashboard' }
     ],
     items2: [
       { picture: 28, text: 'Joseph' },

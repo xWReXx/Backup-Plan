@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Profile from './views/Profile'
+import Dashboard from './views/Dashboard'
+import MakePlans from './views/MakePlans'
 
 Vue.use(Router)
 
@@ -16,6 +18,16 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/makeplans',
+      name: 'MakePlans',
+      component: MakePlans
     },
     {
       path: '/about',
