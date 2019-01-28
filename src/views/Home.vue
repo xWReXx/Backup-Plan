@@ -48,8 +48,6 @@ export default {
     Login
   },
   data: () => ({
-    signup: false,
-    login: false
   })
 }
 </script>

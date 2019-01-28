@@ -1,5 +1,4 @@
-import firebase, { database } from 'firebase'
-import store from './store'
+import firebase from 'firebase'
 
 var config = {
   apiKey: 'AIzaSyD2K1AWIGWQ9EnhMFmWay4W4jbtgDUaBQQ',
