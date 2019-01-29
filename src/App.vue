@@ -10,15 +10,6 @@
             <v-list-tile-title>{{ item.text }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <!-- <v-subheader class='mt-3 grey--text text--darken-1'>PRIVATE CONTACTS</v-subheader>
-        <v-list>
-          <v-list-tile v-for='item in items2' :key='item.text' avatar>
-            <v-list-tile-avatar>
-              <img :src='`https://randomuser.me/api/portraits/men/${item.picture}.jpg`' alt>
-            </v-list-tile-avatar>
-            <v-list-tile-title v-text='item.text'></v-list-tile-title>
-          </v-list-tile>
-        </v-list> -->
         <v-list-tile class='mt-3'>
           <v-list-tile-action>
             <v-icon>public</v-icon>
@@ -52,7 +43,7 @@ export default {
       { icon: 'account_box', text: 'Profile', url: '/profile' },
       { icon: 'group_add', text: 'Donate Some Space', url: '/donate' },
       { icon: 'history', text: 'History', url: '/History' },
-      { icon: 'directions_run', text: 'Make Backup Plans', url: '/makeaplan' },
+      { icon: 'directions_run', text: 'Make Backup Plans', url: '/makeplans' },
       { icon: 'settings', text: 'Dashboard', url: '/dashboard' }
     ],
     items2: [

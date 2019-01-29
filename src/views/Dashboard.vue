@@ -9,7 +9,6 @@
         <v-btn block color="red" to='/makeplans' dark>SEARCH FOR A PLAN</v-btn>
         <v-btn block color="red" to='/donate' dark>DONATE SOME SPACE</v-btn>
         <v-btn block color="red" to='/profile' dark>YOUR PROFILE</v-btn>
-        <v-btn block color="red" to='/contacts' dark>MANAGE CONTACTS</v-btn>
         <v-btn block color="red" dark>INSTALL</v-btn>
       </v-flex>
     </v-layout>

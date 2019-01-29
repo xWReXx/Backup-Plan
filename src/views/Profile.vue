@@ -76,6 +76,7 @@ export default {
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
+          console.log(doc.data())
           let userProfile = doc.data()
           userProfile.id = doc.id
           this.profile.push(userProfile)

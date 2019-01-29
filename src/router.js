@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import Profile from './views/Profile'
 import Dashboard from './views/Dashboard'
 import MakePlans from './views/MakePlans'
+import Donate from './views/Donate.vue'
+import Donate1 from './views/Donate1.vue'
 
 Vue.use(Router)
 
@@ -18,6 +20,15 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/donate',
+      name: 'Donate',
+      component: Donate
+    },{
+      path: '/donate1',
+      name: 'Donate1',
+      component: Donate1
     },
     {
       path: '/dashboard',
