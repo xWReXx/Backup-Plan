@@ -1,6 +1,6 @@
 <template>
     <v-layout row justify-center>
-        <v-dialog v-model="dialog" persistent max-width="600px">
+        <v-dialog v-model="infoModal" persistent max-width="600px">
           <v-btn slot="activator" flat color='red'>Additional Options</v-btn>
           <v-card>
             <v-card-title>
@@ -21,7 +21,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="red" flat @click="dialog = false">Close</v-btn>
+              <v-btn color="red" flat @click="infoModal = false">Close</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -32,7 +32,7 @@
 
 export default {
   data: () => ({
-    dialog: false,
-  }),
+    infoModal: false
+  })
 }
 </script>

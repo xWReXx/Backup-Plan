@@ -25,7 +25,8 @@ export default new Router({
       path: '/donate',
       name: 'Donate',
       component: Donate
-    },{
+    },
+    {
       path: '/donate1',
       name: 'Donate1',
       component: Donate1
