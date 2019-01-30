@@ -56,7 +56,7 @@ export default {
         city: 'LakeWood ',
         state: 'Colorado',
         img: 'house1',
-        occupancy: 15
+        occupancy: 10
       },
       {
         adress: '1234 Big Walk Way',
@@ -80,7 +80,7 @@ export default {
         city: 'LakeWood ',
         state: 'Colorado',
         img: 'house4',
-        occupancy: 4
+        occupancy: 3
       }
       // {
       //   adress: '1234 Big Walk Way',

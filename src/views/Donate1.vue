@@ -12,7 +12,7 @@
           <v-layout>
             <v-flex mb-4 xs12 sm6 offset-sm3>
               <v-card >
-                <v-img class='white--text' height='200px' :src="require('../assets/house4.jpg')">
+                <v-img class='white--text' height='200px' :src="require('../assets/house3.jpg')">
                   <v-container fill-height fluid>
                   </v-container>
                 </v-img>
