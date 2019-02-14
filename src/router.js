@@ -9,7 +9,7 @@ import Donate1 from './views/Donate1.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -17,7 +17,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/profile',
+      path: '/profile/:id',
       name: 'Profile',
       component: Profile
     },
@@ -51,3 +51,5 @@ export default new Router({
     }
   ]
 })
+
+export default router

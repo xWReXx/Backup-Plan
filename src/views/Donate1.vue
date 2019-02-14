@@ -28,7 +28,7 @@
                   </div>
                 </v-card-title>
                 <v-card-actions>
-                  <v-btn flat color='red'>Make Plans</v-btn>
+                  <EditListing />
                   <v-btn to="/donate" flat color='red'>Remove Listing</v-btn>
                 </v-card-actions>
               </v-card>
@@ -40,11 +40,11 @@
 </template>
 
 <script>
-import PostDonate from '../components/PostDonate'
+import EditListing from '../components/EditListing'
 
 export default {
   components: {
-    PostDonate
+    EditListing
   }
 }
 </script>

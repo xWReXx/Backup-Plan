@@ -1,7 +1,7 @@
 <template>
-  <v-dialog v-model='loginModal' persistent max-width='290'>
+  <v-dialog v-model='loginModal' persistent max-width='450'>
     <v-btn slot='activator' color='red' dark>Log In</v-btn>
-    <v-flex xs12 sm8 md4>
+    <v-flex s12>
       <v-card class='elevation-12'>
         <v-toolbar dark color='red'>
           <v-toolbar-title>Login</v-toolbar-title>
@@ -20,16 +20,15 @@
               prepend-icon='lock'
               name='password'
               label='Password'
-              id='password'
               type='password'
             ></v-text-field>
           </v-form>
         </v-card-text>
         <v-card-actions>
-          <v-spacer></v-spacer>
           <v-btn color='red' v-on:click='login'>Login</v-btn>
           <v-btn color='red' @click='loginModal = false'>Cancel</v-btn>
         </v-card-actions>
+          <p class='feedback' v-if='feedback'>{{this.feedback}}</p>
       </v-card>
     </v-flex>
   </v-dialog>
@@ -42,17 +41,34 @@ export default {
   data: () => ({
     email: '',
     password: '',
-    loginModal: false
+    loginModal: false,
+    feedback: null
   }),
   methods: {
     login () {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          this.$router.replace('/dashboard')
-        })
+      if (this.email && this.password) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then(user => {
+            this.$router.replace('/dashboard')
+          })
+          .catch(err => {
+            this.feedback = err.message
+          })
+        this.feedback = null
+      } else {
+        this.feedback = 'Please enter an email and password'
+      }
     }
   }
 }
 </script>
+
+<style>
+  .feedback {
+    margin-left: 7px;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+</style>
