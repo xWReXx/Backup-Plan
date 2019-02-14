@@ -10,11 +10,10 @@
               <v-container grid-list-md>
                 <v-layout wrap>
                   <v-flex xs12 sm6 md4>
+                    <v-checkbox input-value="true" value disabled label='Pets'></v-checkbox>
                     <v-checkbox input-value="true" value disabled label='Family Friendly'></v-checkbox>
-                    <v-checkbox input-value="true" value disabled label='Public Transportation'></v-checkbox>
-                    <v-checkbox input-value="true" value disabled label='Handicapped Acces'></v-checkbox>
                     <v-checkbox input-value="true" value disabled label='Washer Dryer'></v-checkbox>
-                    <v-checkbox input-value="true" value disabled label='Laundromat Near by'></v-checkbox>
+                    <v-checkbox input-value="true" value disabled label='Kitchen Access'></v-checkbox>
                   </v-flex>
                 </v-layout>
               </v-container>

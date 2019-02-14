@@ -72,7 +72,7 @@ export default {
         city: 'LakeWood ',
         state: 'Colorado',
         img: 'house3',
-        occupancy: 4
+        occupancy: 3
       },
       {
         adress: '1234 Big Walk Way',

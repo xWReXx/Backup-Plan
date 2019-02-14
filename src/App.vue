@@ -10,13 +10,10 @@
             <v-list-tile-title>{{ item.text }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile class='mt-3'>
-          <v-list-tile-action>
-            <v-icon>public</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Update Public Status</v-list-tile-title>
-        </v-list-tile>
       </v-list>
+      <Signup v-if='!user'/>
+      <Login v-if='!user'/>
+      <v-btn v-if='user' color='red' dark @click='logout'>Signout</v-btn>
     </v-navigation-drawer>
     <v-toolbar color='red' dense fixed clipped-left app>
       <v-toolbar-side-icon @click.stop='drawer = !drawer'></v-toolbar-side-icon>
@@ -35,27 +32,45 @@
 </template>
 
 <script>
+import Signup from './components/Signup.vue'
+import Login from './components/Login.vue'
+import firebase from 'firebase'
+
 export default {
   name: 'App',
+  components: {
+    Signup,
+    Login
+  },
   data: () => ({
     drawer: null,
+    user: null,
     items: [
-      { icon: 'account_box', text: 'Profile', url: '/profile' },
-      { icon: 'group_add', text: 'Donate Some Space', url: '/donate' },
-      { icon: 'history', text: 'History', url: '/History' },
+      { icon: 'account_box', text: 'Profile', url: '/profile/:id' },
+      { icon: 'group_add', text: 'Donate Some Space', url: '/donate/:id' },
+      { icon: 'public', text: 'Update Public Status', url: '/status/:id' },
       { icon: 'directions_run', text: 'Make Backup Plans', url: '/makeplans' },
       { icon: 'settings', text: 'Dashboard', url: '/dashboard' }
-    ],
-    items2: [
-      { picture: 28, text: 'Joseph' },
-      { picture: 38, text: 'Apple' },
-      { picture: 48, text: 'Xbox Ahoy' },
-      { picture: 58, text: 'Nokia' },
-      { picture: 78, text: 'MKBHD' }
     ]
   }),
+  methods: {
+    logout () {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('/')
+      })
+    }
+  },
   props: {
     source: String
+  },
+  created () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user
+      } else {
+        this.user = null
+      }
+    })
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model='donateModal' persistent max-width='600px'>
-      <v-btn slot='activator' color='red' dark>Donate Space</v-btn>
+      <v-btn slot='activator' flat color='red' dark>Edit Listing</v-btn>
       <v-card>
         <v-card-title>
           <span class='headline'>Donate Living Space</span>
@@ -39,7 +39,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color='red' to="/donate1" flat @click='donateModal = false'>List Donation</v-btn>
+          <v-btn color='red' to="/donate1" flat @click='donateModal = false'>Save Changes</v-btn>
           <v-btn color='red' flat @click='donateModal = false'>Cancel</v-btn>
         </v-card-actions>
       </v-card>

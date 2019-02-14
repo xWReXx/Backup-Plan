@@ -47,11 +47,11 @@
                     </v-menu>
                   </v-flex>
                   <v-flex xs12 sm6>
-                    <v-autocomplete
+                    <!-- <v-autocomplete
                       :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
                       label="Interests"
                       multiple
-                    ></v-autocomplete>
+                    ></v-autocomplete> -->
                   </v-flex>
                 </v-layout>
               </v-container>

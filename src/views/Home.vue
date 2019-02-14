@@ -18,8 +18,7 @@
         <h2 class='headline font-weight-bold mb-3'>About Backup Plan</h2>
 
         <v-layout mt-15 justify-center>
-          <v-flex
-            xs10
+          <v-flex xs10
           >Backup plan aims to connect people with extra living spaces to people who are evacuating a disaster area.
             <v-layout justify-center>
               <v-btn mt-15 to='/about' color='red' dark>Learn More</v-btn>
