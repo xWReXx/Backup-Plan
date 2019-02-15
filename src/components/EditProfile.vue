@@ -15,7 +15,7 @@
                   <v-flex xs12 sm6 md6>
                     <v-text-field label="Legal last name*" persistent-hint required></v-text-field>
                   </v-flex>
-                  <v-flex xs6>
+                  <v-flex xs12>
                     <v-menu
                       ref="menu"
                       :close-on-content-click="false"
@@ -53,12 +53,15 @@
                     <v-text-field label="City*" persistent-hint required></v-text-field>
                   </v-flex>
                   <v-flex xs6>
-                    <v-text-field label="State*" required></v-text-field>
+                    <v-autocomplete
+                      v-model="state"
+                      :items="states"
+                      label="State"
+                    ></v-autocomplete>
                   </v-flex>
                   <v-flex xs6>
                     <v-text-field label="Zip*" required></v-text-field>
                   </v-flex>
-                  
                 </v-layout>
               </v-container>
               <small>*indicates required field</small>
@@ -82,7 +85,25 @@ export default {
     menu: false,
     message: '',
     profile: [],
-    birthDate: ''
+    birthDate: '',
+    state: null,
+    isEditing: false,
+    states: [
+      'Alabama', 'Alaska', 'American Samoa', 'Arizona',
+      'Arkansas', 'California', 'Colorado', 'Connecticut',
+      'Delaware', 'District of Columbia', 'Federated States of Micronesia',
+      'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
+      'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+      'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
+      'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+      'Missouri', 'Montana', 'Nebraska', 'Nevada',
+      'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+      'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
+      'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
+      'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
+      'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
+      'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+    ]
   }),
   watch: {
     menu (val) {
