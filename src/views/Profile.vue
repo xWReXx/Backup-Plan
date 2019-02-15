@@ -94,6 +94,7 @@ import db from '@/firebase.js'
 import EditProfile from '../components/EditProfile.vue'
 import firebase from 'firebase'
 import '@firebase/firestore'
+import slugify from 'slugify'
 
 export default {
   name: 'Profile',
@@ -105,7 +106,7 @@ export default {
     profile: {},
     fileName: '',
     uploadTask: '',
-    downloadUrl: null
+    slug: null
   }),
   watch: {
     menu (val) {
@@ -127,13 +128,15 @@ export default {
     },
     upload (file) {
       this.fileName = file.name
-      firebase.storage().ref('/' + this.user.id + '/profilePicture/' + file.name).put(file)
+      this.uploadTask = firebase.storage().ref('/' + this.user.id + '/profilePicture/' + file.name).put(file)
         .then(uploadTaskSnapshot => {
           return uploadTaskSnapshot.ref.getDownloadURL()
         })
         .then(imageUrl => {
           console.log(imageUrl)
-          this.downloadUrl = imageUrl
+          db.collection('users').doc(this.slug).update({
+            profileImg: imageUrl
+          })
         })
     }
   },
@@ -155,6 +158,13 @@ export default {
       .get()
       .then(user => {
         this.profile = user.data()
+        console.log(this.profile)
+        this.slug = slugify(this.profile.userName, {
+            replacement: '-',
+            remove: /[$*_=~.()''!\-:@]/g,
+            lower: true
+        })
+        console.log(this.slug)
       })
   }
 }
