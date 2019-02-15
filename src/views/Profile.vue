@@ -1,7 +1,7 @@
 <template>
   <v-container fill-height>
     <v-layout row justify-center>
-      <v-flex xs10 sm6 offset-xs1>
+      <v-flex xs10>
         <v-card>
           <v-img src='https://cdn.vuetifyjs.com/images/lists/ali.png' height='300px'>
             <v-layout column fill-height>
@@ -63,7 +63,22 @@
             <v-list-tile>
               <v-list-tile-content>
                 <v-flex column align-self-center>
-                  <v-btn class='editPicture' color='red' dark>Edit Picture</v-btn>
+                  <v-btn
+                  @click.native="selectFile"
+                  class='editPicture'
+                  color='red'
+                  dark
+                >Edit Picture</v-btn>
+                  <input
+                    id="files"
+                    type="file"
+                    name="file"
+                    ref="uploadInput"
+                    accept="image/*"
+                    style='display: none'
+                    :multiple="false"
+                    @change="uploadFile($event)"
+                  />
                 </v-flex>
               </v-list-tile-content>
             </v-list-tile>
@@ -78,6 +93,7 @@
 import db from '@/firebase.js'
 import EditProfile from '../components/EditProfile.vue'
 import firebase from 'firebase'
+// import { firestorage } from '@/firebase/firestorage'
 
 export default {
   name: 'Profile',
@@ -86,28 +102,43 @@ export default {
   },
   data: () => ({
     user: null,
-    profile: {}
+    profile: {},
+    fileName: '',
+    uploadTask: '',
+    downloadUrl: null
   }),
   watch: {
     menu (val) {
       val && this.$nextTick(() => (this.$refs.picker.activePicker = 'YEAR'))
+    },
+    uploadTask: function () {
+      this.uploadTask.on('state_changed', sp => {
+        this.progressUpload = Math.floor(sp.bytesTransferred / sp.totalBytes * 100)
+      },
+      null,
+      () => {
+        this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          this.downloadURL = downloadURL
+        })
+      })
     }
   },
   methods: {
     save (date) {
       this.$refs.menu.save(date)
     },
-    uploadFile (e) {
-      const file = e.target.files[0]
-      storage.ref('/' + this.user.id + '/' + file.name).put(file)
-        .then(response => {
-          response.ref.getDownloadURL().then(downloadURL => {
-            db.collection('users')
-              .doc(this.user.id)
-              .update({ imageUrl: downloadURL })
-          })
-        })
-        .catch(err => console.log(err))
+    selectFile () {
+      this.$refs.uploadInput.click()
+    },
+    detectFiles (e) {
+      let fileList = e.target.files || e.dataTransfer.files
+      Array.from(Array(fileList.length).keys()).map(x => {
+        this.upload(fileList[x])
+      })
+    },
+    uploadFile (file) {
+      this.fileName = file.name
+      this.uploadTask = firebase.storage.ref('/' + this.user.id + '/profilePicture/' + file.name).put(file)
     }
   },
   created () {
