@@ -3,7 +3,7 @@
     <v-layout row justify-center>
       <v-flex xs10>
         <v-card>
-          <v-img src='https://cdn.vuetifyjs.com/images/lists/ali.png' height='300px'>
+          <v-img :src="profile.profileImg" height='300px'>
             <v-layout column fill-height>
               <v-spacer></v-spacer>
               <v-card-title class='white--text pl-5 pt-5'>
@@ -77,7 +77,7 @@
                     accept="image/*"
                     style='display: none'
                     :multiple="false"
-                    @change="uploadFile($event)"
+                    @change="detectFiles($event)"
                   />
                 </v-flex>
               </v-list-tile-content>
@@ -93,7 +93,7 @@
 import db from '@/firebase.js'
 import EditProfile from '../components/EditProfile.vue'
 import firebase from 'firebase'
-// import { firestorage } from '@/firebase/firestorage'
+import '@firebase/firestore'
 
 export default {
   name: 'Profile',
@@ -110,17 +110,6 @@ export default {
   watch: {
     menu (val) {
       val && this.$nextTick(() => (this.$refs.picker.activePicker = 'YEAR'))
-    },
-    uploadTask: function () {
-      this.uploadTask.on('state_changed', sp => {
-        this.progressUpload = Math.floor(sp.bytesTransferred / sp.totalBytes * 100)
-      },
-      null,
-      () => {
-        this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.downloadURL = downloadURL
-        })
-      })
     }
   },
   methods: {
@@ -136,9 +125,16 @@ export default {
         this.upload(fileList[x])
       })
     },
-    uploadFile (file) {
+    upload (file) {
       this.fileName = file.name
-      this.uploadTask = firebase.storage.ref('/' + this.user.id + '/profilePicture/' + file.name).put(file)
+      firebase.storage().ref('/' + this.user.id + '/profilePicture/' + file.name).put(file)
+        .then(uploadTaskSnapshot => {
+          return uploadTaskSnapshot.ref.getDownloadURL()
+        })
+        .then(imageUrl => {
+          console.log(imageUrl)
+          this.downloadUrl = imageUrl
+        })
     }
   },
   created () {
