@@ -105,12 +105,12 @@ export default {
     feedback: null
   }),
   watch: {
-    menu(val) {
+    menu (val) {
       val && this.$nextTick(() => (this.$refs.picker.activePicker = 'YEAR'))
     }
   },
   methods: {
-    signup() {
+    signup () {
       const db = firebase.firestore()
       if (this.userName && this.email && this.password) {
         this.slug = slugify(this.userName, {
@@ -152,7 +152,7 @@ export default {
         this.feedback = 'Please fill out all required fields'
       }
     },
-    save(date) {
+    save (date) {
       this.$refs.menu.save(date)
     }
   }

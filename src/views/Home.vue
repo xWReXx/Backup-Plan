@@ -6,8 +6,9 @@
       </v-flex>
       <v-flex mb-4>
         <h2 class='display-1 font-weight-bold mb-2'>Do you have a plan?</h2>
-        <Signup />
-        <Login />
+        <Signup v-if='!user'/>
+        <Login v-if='!user'/>
+        <v-btn v-if='user' color='red' dark @click='logout'>Singout</v-btn>
       </v-flex>
       <v-flex xs12>
         <h2>Install to Home Screen</h2>
@@ -40,6 +41,7 @@
 <script>
 import Signup from '../components/Signup.vue'
 import Login from '../components/Login.vue'
+import firebase from 'firebase'
 
 export default {
   components: {
@@ -47,6 +49,23 @@ export default {
     Login
   },
   data: () => ({
-  })
+    user: null
+  }),
+  methods: {
+    logout () {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('/')
+      })
+    }
+  },
+  created () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user
+      } else {
+        this.user = null
+      }
+    })
+  }
 }
 </script>

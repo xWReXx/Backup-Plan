@@ -4,21 +4,18 @@
           <v-btn slot="activator" color="red" dark>Edit Profile</v-btn>
           <v-card>
             <v-card-title>
-              <span class="headline">User Profile</span>
+              <span class="headline">Edit Profile</span>
             </v-card-title>
             <v-card-text>
               <v-container grid-list-md>
                 <v-layout wrap>
-                  <v-flex xs12 sm6 md4>
+                  <v-flex xs12 sm6 md6>
                     <v-text-field label="Legal first name*" required></v-text-field>
                   </v-flex>
-                  <v-flex xs12 sm6 md4>
+                  <v-flex xs12 sm6 md6>
                     <v-text-field label="Legal last name*" persistent-hint required></v-text-field>
                   </v-flex>
-                  <v-flex xs12>
-                    <v-text-field label="Email*" required></v-text-field>
-                  </v-flex>
-                  <v-flex xs12>
+                  <v-flex xs6>
                     <v-menu
                       ref="menu"
                       :close-on-content-click="false"
@@ -46,13 +43,22 @@
                       ></v-date-picker>
                     </v-menu>
                   </v-flex>
-                  <v-flex xs12 sm6>
-                    <!-- <v-autocomplete
-                      :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                      label="Interests"
-                      multiple
-                    ></v-autocomplete> -->
+                  <v-flex xs12>
+                    <v-text-field label="Email*" required></v-text-field>
                   </v-flex>
+                  <v-flex xs12>
+                    <v-text-field label="Address*" required></v-text-field>
+                  </v-flex>
+                  <v-flex xs6>
+                    <v-text-field label="City*" persistent-hint required></v-text-field>
+                  </v-flex>
+                  <v-flex xs6>
+                    <v-text-field label="State*" required></v-text-field>
+                  </v-flex>
+                  <v-flex xs6>
+                    <v-text-field label="Zip*" required></v-text-field>
+                  </v-flex>
+                  
                 </v-layout>
               </v-container>
               <small>*indicates required field</small>
@@ -68,7 +74,7 @@
 </template>
 
 <script>
-import db from '@/firebase.js'
+// import db from '@/firebase.js'
 
 export default {
   data: () => ({
@@ -89,16 +95,6 @@ export default {
     }
   },
   created () {
-    // fetching from firebase
-    db.collection('users')
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          let userProfile = doc.data()
-          userProfile.id = doc.id
-          this.profile.push(userProfile)
-        })
-      })
   }
 }
 </script>

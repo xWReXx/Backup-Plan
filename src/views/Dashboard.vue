@@ -34,19 +34,19 @@ export default {
       })
     },
     goToProfile () {
-      this.$router.push({name: 'Profile', params: {id: this.user_id}})
+      this.$router.push({ name: 'Profile', params: { id: this.user_id } })
     }
   },
   created () {
     let ref = db.collection('users')
-    //get current user
+    // get current user
     ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
-    .then(snapshot => {
+      .then(snapshot => {
         snapshot.forEach(doc => {
-            this.user_id = doc.id
-            console.log(this.user_id)
+          this.user_id = doc.id
+          console.log(this.user_id)
         })
-    })
+      })
   }
 }
 </script>
