@@ -1,6 +1,10 @@
 # backup-plan
 ```
-Backup Plan is a progressive web app that connects people displaced by natural disasters with people who have extra living space they may be willing to donate.  I built Backup PLan as my final capstone project Galvanize.  In 10 days I was required to create and present an app using tech that I was unfamiliar with
+Backup Plan is a progressive web app that connects people displaced 
+by natural disasters with people who have extra living space they 
+may be willing to donate.  I built Backup PLan as my final capstone 
+project Galvanize.  In 10 days I was required to create and present 
+an app using tech that I was unfamiliar with
 ```
 ## Unfamiliar Tech
 ```
