@@ -24,6 +24,27 @@ an app using tech that I was unfamiliar with
 - CSS3
 ```
 
+## Working Features
+```
+- User Profiles
+- Auth
+- Firestorage
+```
+
+## Work In Progress
+```
+- Posting a donated livivng space
+- Displaying donations to users
+```
+
+## Plans For the Future
+```
+- Implementing Google Maps
+- OAuth
+- Booking a living space for a specific time period
+- Ability to search for a living space in a specific location
+```
+
 ### Project setup
 ```
 npm install
