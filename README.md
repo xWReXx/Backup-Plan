@@ -16,6 +16,7 @@ an app using tech that I was unfamiliar with
   - Firestore
   - Firestorage
   - Auth/OAuth
+- Google Maps
 ```
 ## Familiar Tech
 ```
@@ -28,7 +29,6 @@ an app using tech that I was unfamiliar with
 ```
 - User Profiles
 - Auth
-- Firestorage
 ```
 
 ## Work In Progress
@@ -39,6 +39,7 @@ an app using tech that I was unfamiliar with
 
 ## Plans For the Future
 ```
+- User status updates
 - Implementing Google Maps
 - OAuth
 - Booking a living space for a specific time period
